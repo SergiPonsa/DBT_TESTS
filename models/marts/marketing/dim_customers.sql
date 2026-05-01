@@ -20,7 +20,7 @@ customer_orders as (
         count(order_id) as number_of_orders,
         sum(amount) as lifetime_value
     from orders
-    left join {{ ref('stg_stripe__payments')}} using (order_id)
+    left join {{ ref('stg_stripe__payment')}} using (order_id)
 
     group by 1
 
